@@ -175,14 +175,3 @@ variable "ami_archi_implementaion" {
 }
 
 
-variable "chk_ec2_loc" {
-  description = "location"
-  type        = string
-  default     = "us-west-2"  
-}
-
-variable "loc_type" {
-  description = "location type"
-  type        = string
-  default     = "availability-zone"  
-}
