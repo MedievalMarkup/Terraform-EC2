@@ -22,3 +22,8 @@ variable "ec2_key_name" {
   description = "key for ec2"
   type = string
 }
+
+variable "ec2_av_zone" {
+  description = "key for ec2"
+  type = string
+}

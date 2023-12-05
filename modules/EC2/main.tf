@@ -4,4 +4,5 @@ resource "aws_instance" "test-instance-1" {
   vpc_security_group_ids = var.vpc_security_groups_id
   user_data = var.ec2_user_data
   key_name = var.ec2_key_name
+  availability_zone = var.ec2_av_zone
 }
