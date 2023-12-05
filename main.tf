@@ -57,6 +57,7 @@ module "EC2" {
   aws_ec2_ami           = data.aws_ami.example.id
   ec2_user_data         = var.ec2_user_data
   ec2_key_name          = var.ec2_key_name
+  //I was getting error here that id is not available because I was using splat operator on object, so need to use for_each/for
   vpc_security_groups_id = [for sg in module.security_groups : sg.id]
   //data.aws_availability_zones.az_for_ec2.names this will only provide list, but for for_each we need set
   //now its set of strings & in set of strings: each.key == each.value
