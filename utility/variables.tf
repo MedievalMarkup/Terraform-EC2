@@ -6,8 +6,8 @@ variable "chk_ec2_loc" {
 
 variable "loc_type" {
   description = "location type"
-  type        = list(string)
-  default     = ["availability-zone"]  
+  type        = string
+  default     = "availability-zone"  
 }
 
 variable "aws_ec2_instance_type" {

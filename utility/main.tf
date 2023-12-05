@@ -10,5 +10,5 @@ data "aws_ec2_instance_type_offerings" "chk_az_for_ec2" {
     values = var.chk_ec2_loc
   }
 
-  location_type = var.loc_type
+  location_type = [var.loc_type]
 }
