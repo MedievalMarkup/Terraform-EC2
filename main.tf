@@ -52,17 +52,17 @@ module "security_groups" {
 
 module "EC2" {
   source                = "./modules/EC2"
-  count                 = length(var.aws_ec2_instance_type)
-  aws_ec2_instance_type = var.aws_ec2_instance_type[count.index]
+  for_each              = toset(var.aws_ec2_instance_type)
+  aws_ec2_instance_type = each.key
   aws_ec2_ami           = data.aws_ami.example.id
   ec2_user_data         = var.ec2_user_data
   ec2_key_name          = var.ec2_key_name
   //I was getting error here that id is not available because I was using splat operator on object, so need to use for_each/for
-  vpc_security_groups_id = [for sg in module.security_groups : sg.id]
+  vpc_security_groups_id = [for sg in module.security_groups : sg.sg_ids]
   //data.aws_availability_zones.az_for_ec2.names this will only provide list, but for for_each we need set
   //now its set of strings & in set of strings: each.key == each.value
-  for_each               = toset(data.aws_availability_zones.az_for_ec2.names)
-  ec2_av_zone            = each.key
+  //for_each               = toset(data.aws_availability_zones.az_for_ec2.names)
+  ec2_av_zone            = toset(data.aws_availability_zones.az_for_ec2.names)
   # depends_on = [
   #   data.aws_ami.example,
   #   data.aws_availability_zones.az_for_ec2

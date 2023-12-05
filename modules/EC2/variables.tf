@@ -25,5 +25,5 @@ variable "ec2_key_name" {
 
 variable "ec2_av_zone" {
   description = "key for ec2"
-  type = string
+  type = set(string)
 }
