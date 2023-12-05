@@ -7,12 +7,12 @@ output "sg_ids" {
 //}
 
 output "ec2_ips_pub" {
-  value = toset([for instance in module.EC2 : instance.public_ip])
+  value = toset([for instance in module.EC2 : instance.ec2_public_ip])
   //value = module.EC2.public_ip
 }
 
 output "ec2_dns_pub" {
-  value = toset([for instance in module.EC2 : instance.public_dns])
+  value = toset([for instance in module.EC2 : instance.ec2_dns])
   //value = module.EC2.public_dns
 }
 
