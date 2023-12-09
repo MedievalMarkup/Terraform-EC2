@@ -11,8 +11,8 @@ variable "aws_region" {
 
 variable "aws_ec2_instance_type" {
   description = "AWS EC2 Instance Type"
-  type = list(string)
-  default = ["t2.micro"]
+  type = string
+  default = "t2.micro"
 }
 
 variable "aws_ec2_ami" {
@@ -173,5 +173,19 @@ variable "ami_archi_implementaion" {
   type        = string
   default     = "x86_64"
 }
+
+
+variable "chk_ec2_loc" {
+  description = "location"
+  type        = list(string)
+  default     = ["us-west-2b"]
+}
+
+variable "loc_type" {
+  description = "location type"
+  type        = string
+  default     = "availability-zone"  
+}
+
 
 

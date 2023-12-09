@@ -13,9 +13,10 @@ output "ec2_ips_pub" {
 
 output "ec2_dns_pub" {
   value = toset([for instance in module.EC2 : instance.ec2_dns])
-  //value = module.EC2.public_dns
+  //value = module.EC2.ec2_dns
 }
 
 output "ami_id" {
   value = data.aws_ami.example.id
 }
+
